@@ -1,4 +1,6 @@
 ﻿using DT102G_project_web.Models;
+using DT102G_project_web.Services;
+using DT102G_project_web.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -18,10 +20,37 @@ namespace DT102G_project_web.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
-        }
+            //Get education list
+            var workUrl = "Works";
+            List<Work> works = await ApiHelper.GetAllObjects<Work>(workUrl);
+
+            //Get education list
+            var educationUrl = "Educations";
+            List<Education> educations = await ApiHelper.GetAllObjects<Education>(educationUrl);
+
+            //Get project list
+            var projectUrl = "Projects";
+            List<Project> projects = await ApiHelper.GetAllObjects<Project>(projectUrl);
+
+            //Get personal information list
+            var personalInformationUrl = "PersonalInformations";
+            List<PersonalInformation> personalInformation = await ApiHelper.GetAllObjects<PersonalInformation>(personalInformationUrl);
+
+            //set value of list
+            var viewModel = new CvViewModel
+            {
+                PersonalInformations = personalInformation,
+                Educations = educations,
+                Projects = projects,
+                Works = works,
+                
+            };
+            return View(viewModel);
+            //list of personal infomation
+        
+    }
 
         public IActionResult Privacy()
         {

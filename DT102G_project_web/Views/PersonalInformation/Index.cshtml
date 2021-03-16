@@ -1,0 +1,85 @@
+﻿@model DT102G_project_web.ViewModels.PersonalInformationViewModel;
+
+@{
+    ViewData["Title"] = "PersonalInformation Page";
+}
+
+<h1>About me</h1>
+
+<!--Change information form-->
+<h4 class="other-h4">Change information about me</h4>
+<hr />
+<form method="post">
+    <label asp-for="PersonalInformation.Name">Name:</label><br>
+    <input asp-for="PersonalInformation.Name" /><br>
+    @*error message*@
+    <span class="form-error-message" asp-validation-for="PersonalInformation.Name"></span><br />
+
+    <label asp-for="PersonalInformation.Surname">Lastname:</label><br>
+    <input asp-for="PersonalInformation.Surname">/<br>
+    @*error message*@
+    <span class="form-error-message" asp-validation-for="PersonalInformation.Surname"></span><br />
+
+    <label asp-for="PersonalInformation.Email">Email:</label><br>
+    <input asp-for="PersonalInformation.Email" /><br>
+    @*error message*@
+    <span class="form-error-message" asp-validation-for="PersonalInformation.Email"></span><br />
+
+    <label asp-for="PersonalInformation.Phone">Phone:</label><br>
+    <input asp-for="PersonalInformation.Phone" /><br>
+    @*error message*@
+    <span class="form-error-message" asp-validation-for="PersonalInformation.Phone"></span><br />
+
+    <label asp-for="PersonalInformation.LinkedIn">LinkedIn:</label><br>
+    <input asp-for="PersonalInformation.LinkedIn" /><br>
+    @*error message*@
+    <span class="form-error-message" asp-validation-for="PersonalInformation.LinkedIn"></span><br />
+
+    <label asp-for="PersonalInformation.IntroductionText">Introduction text:</label><br>
+    <textarea rows="10" cols="50" asp-for="PersonalInformation.IntroductionText"></textarea><br>
+    @*error message*@
+    <span class="form-error-message" asp-validation-for="PersonalInformation.IntroductionText"></span><br />
+
+    <label asp-for="PersonalInformation.Description">Description:</label><br>
+    <textarea rows="10" cols="50" asp-for="PersonalInformation.Description"> </textarea><br>
+    @*error message*@
+    <span class="form-error-message" asp-validation-for="PersonalInformation.Description"></span><br />
+
+    <input class="submit-btn" type="submit" value="Update info" />
+
+    @if (@ViewBag.FormMessage != null)
+    {
+        <div class="form-message-div">
+            <p>@ViewBag.FormMessage</p>
+        </div>
+    }
+</form>
+
+<!--See all projects-->
+<h4 class="other-h4">Personal Information.</h4>
+<hr />
+
+@foreach (var item in Model.PersonalInformations)
+{
+<div class="admin-experience">
+    <h3>Name:</h3>
+    <p>@item.Name</p>
+    <h3>Surname:</h3>
+    <p>@item.Surname</p>
+    <h3>Email:</h3>
+    <p>@item.Email</p>
+    <h3>Phone:</h3>
+    <p>@item.Phone</p>
+    <h3>LinkedIn:</h3>
+    <p>@item.LinkedIn</p>
+    <h3>Introduction text:</h3>
+    <p>@item.IntroductionText</p>
+    <h3>Description:</h3>
+    <p>@item.Description</p>
+    <button class="submit-btn">Uppdatera</button>
+    <button class="submit-btn">Radera</button>
+    <div id="error-div">
+        <!--Error div-->
+    </div>
+</div>
+}

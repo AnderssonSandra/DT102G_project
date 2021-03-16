@@ -1,0 +1,137 @@
+/*Fonts*/
+
+h1, 
+h2, 
+h3, 
+h4, 
+h5, 
+h6
+{
+    font-family: $headings;
+    text-transform: capitalize;
+    color: $black;
+}
+
+p, 
+span,
+label,
+th,
+td,
+a,
+li
+{
+    font-family: $text;
+    color: $black;
+    line-height: 1.8;
+    font-size: 1.2em;
+}
+
+h1 {
+    text-align: center;
+    font-size: 3.5em;
+    margin-top: 1em;
+}
+
+#cv-header-name {
+    margin-top: 0;
+}
+
+h2 {
+    font-size: 5em;
+    padding: 2em 0 0 1.5em;
+    display: block;
+    @include standard-container;
+}
+
+h4 {
+    font-size: 2em;
+    color: $pink;
+}
+
+.other-h4 {
+    text-align: center;
+    font-size: 2.5em;
+    margin-top: 1em;
+}
+
+.admin-h2 {
+    padding: 2em 0 0 0;
+    text-align: center;
+    font-size: 3.5em;
+}
+
+.p-text-danger {
+    margin: 3em 0 0 0.5em;
+    color: $pink;
+    font-weight: bold;
+    text-align: center;
+    font-size: 1.4em;
+}
+
+.p-confirmation {
+    margin: 3em 0 0 0.5em;
+    font-weight: bold;
+    text-align: center;
+    font-size: 1.4em;
+}
+
+#delete {
+    display: block;
+    text-align: center;
+    padding: 1em 0;
+}
+
+.form-error-message {
+    font-weight: bold;
+    color: $pink;
+    font-size: 1em;
+}
+
+/*responsive design for tablets*/
+@include tablet {
+    h2 {
+        font-size: 3.5em;
+        padding: 2em 0 0 0.5em
+    }
+
+    .admin-h2 {
+        padding: 1em 0 0 0;
+    }
+}
+
+/*responsive design for phones*/
+@include phone {
+
+    h1 {
+        font-size: 2.5em;
+    }
+
+    h2 {
+        font-size: 2.5em;
+        padding: 2em 0 0 0.5em
+    }
+
+    h4 {
+        font-size: 1.7em;
+    }
+
+    .other-h4 {
+        font-size: 2em;
+    }
+
+    .admin-h2 {
+        padding: 0.5em 0 0 0;
+        font-size: 2.5em;
+    }
+
+    p, 
+    span,
+    label,
+    th,
+    td,
+    a,
+    li
+    {
+        font-size: 1em;
+    }
+}

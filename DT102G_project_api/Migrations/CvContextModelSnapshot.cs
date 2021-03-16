@@ -128,8 +128,6 @@ namespace DT102G_project_api.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Buzzwords")
-                        .IsRequired()
-                        .HasMaxLength(300)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Description")
@@ -140,6 +138,11 @@ namespace DT102G_project_api.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("StartDate")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(300)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Workplace")

@@ -1,0 +1,73 @@
+﻿.admin-experience {
+    margin: 2em auto;
+    background-color: #F0EDE9;
+    box-sizing: border-box;
+    padding: 2em;
+    width: 50%;
+
+    h3 {
+        font-size: 2em;
+        font-weight: bold;
+    }
+
+    p {
+        margin: 0.5em 0 2em 0;
+        overflow: auto;
+    }
+
+    a {
+        margin: 0.5em 0 2em 0;
+        display: block;
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    .submit-btn {
+        display: block;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 1.2em;
+        width: 100%;
+        box-sizing: border-box;
+        border: none;
+        background-color: #bc8373;
+        color: white;
+        padding: 1em;
+        margin-top: 1em;
+
+        &:hover {
+            background-color: #000000;
+        }
+    }
+}
+
+/*responsive design for show experieces*/
+/*tablet*/
+@include tablet {
+    .admin-experience {
+        width: 85%;
+    }
+}
+
+/*phone*/
+@include phone {
+    .admin-experience {
+        width: 98%;
+
+        .submit-btn {
+            font-size: 1em;
+            padding: 0.5em;
+            margin-top: 1em;
+        }
+
+        h3 {
+            font-size: 1.5em;
+        }
+
+        p {
+            margin: 0 0 1em 0;
+        }
+    }
+}

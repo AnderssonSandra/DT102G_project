@@ -1,0 +1,594 @@
+﻿/*Reset CSS*/
+html, body, div, span, object, iframe, figure, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, code, em, img, small, strike, strong, sub, sup, tt, b, u, i, ol, ul, li, fieldset, form, label, table, caption, tbody, tfoot, thead, tr, th, td, main, canvas, embed, footer, header, nav, section, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  text-size-adjust: none; }
+
+footer, header, nav, section, main {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after, q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+input {
+  -webkit-appearance: none;
+  border-radius: 0; }
+
+html, body {
+  margin: 0;
+  width: 100%;
+  height: 100%; }
+
+/*Colors*/
+/*Fonts*/
+/*Fonts*/
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Peddana", serif;
+  text-transform: capitalize;
+  color: #000000; }
+
+p,
+span,
+label,
+th,
+td,
+a,
+li {
+  font-family: "Montserrat", sans-serif;
+  color: #000000;
+  line-height: 1.8;
+  font-size: 1.2em; }
+
+h1 {
+  text-align: center;
+  font-size: 3.5em;
+  margin-top: 1em; }
+
+#cv-header-name {
+  margin-top: 0; }
+
+h2 {
+  font-size: 5em;
+  padding: 2em 0 0 1.5em;
+  display: block;
+  width: 100%;
+  box-sizing: border-box; }
+
+h4 {
+  font-size: 2em;
+  color: #BC8373; }
+
+.other-h4 {
+  text-align: center;
+  font-size: 2.5em;
+  margin-top: 1em; }
+
+.admin-h2 {
+  padding: 2em 0 0 0;
+  text-align: center;
+  font-size: 3.5em; }
+
+.p-text-danger {
+  margin: 3em 0 0 0.5em;
+  color: #BC8373;
+  font-weight: bold;
+  text-align: center;
+  font-size: 1.4em; }
+
+.p-confirmation {
+  margin: 3em 0 0 0.5em;
+  font-weight: bold;
+  text-align: center;
+  font-size: 1.4em; }
+
+#delete {
+  display: block;
+  text-align: center;
+  padding: 1em 0; }
+
+.form-error-message {
+  font-weight: bold;
+  color: #BC8373;
+  font-size: 1em; }
+
+/*responsive design for tablets*/
+@media (max-width: 850px) {
+  h2 {
+    font-size: 3.5em;
+    padding: 2em 0 0 0.5em; }
+  .admin-h2 {
+    padding: 1em 0 0 0; } }
+
+/*responsive design for phones*/
+@media (max-width: 600px) {
+  h1 {
+    font-size: 2.5em; }
+  h2 {
+    font-size: 2.5em;
+    padding: 2em 0 0 0.5em; }
+  h4 {
+    font-size: 1.7em; }
+  .other-h4 {
+    font-size: 2em; }
+  .admin-h2 {
+    padding: 0.5em 0 0 0;
+    font-size: 2.5em; }
+  p,
+  span,
+  label,
+  th,
+  td,
+  a,
+  li {
+    font-size: 1em; } }
+
+/*CV header*/
+#cv-header {
+  width: 100%;
+  box-sizing: border-box;
+  height: 100%;
+  position: relative;
+  display: flex; }
+  #cv-header #cv-header-image {
+    background: url(../../images/header-background.jpg);
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-position: center;
+    width: 80%;
+    height: 800px; }
+  #cv-header #cv-header-empty {
+    width: 20%;
+    height: 100%; }
+  #cv-header #cv-header-info {
+    position: absolute;
+    width: 50%;
+    height: 62%;
+    box-sizing: border-box;
+    background-color: #F0EDE9;
+    top: 20%;
+    left: 5%;
+    padding: 10em 2em 0 5em; }
+  #cv-header #cv-header-name {
+    font-size: 6em; }
+  #cv-header #cv-header-text {
+    font-size: 1.5em;
+    padding: 3em 6em 0 0; }
+
+/*responsive design for CV header*/
+@media (max-width: 1200px) {
+  #cv-header #cv-header-info {
+    width: 72%; }
+  #cv-header #cv-header-name {
+    font-size: 5em; } }
+
+/*CV header tablet design */
+@media (max-width: 850px) {
+  #cv-header #cv-header-info {
+    width: 80%; }
+  #cv-header #cv-header-name {
+    font-size: 3.5em; } }
+
+/*CV header phone design*/
+@media (max-width: 600px) {
+  #cv-header #cv-header-image {
+    width: 100%; }
+  #cv-header #cv-header-empty {
+    display: none; }
+  #cv-header #cv-header-info {
+    width: 90%;
+    height: 40%;
+    left: 0;
+    top: 50%;
+    padding: 6em 2em 0 2em; }
+  #cv-header #cv-header-name {
+    font-size: 2em; }
+  #cv-header #cv-header-text {
+    font-size: 0.8em;
+    padding: 1em 1em 0 0; } }
+
+/*CV Footer*/
+#cv-footer {
+  width: 100%;
+  height: 650px;
+  background-color: #F0EDE9;
+  margin-top: 10em; }
+  #cv-footer #cv-footer-parent {
+    display: block;
+    margin: 5em 0 0 12em; }
+  #cv-footer a {
+    display: block;
+    font-weight: bold;
+    font-size: 1em;
+    text-decoration: none; }
+    #cv-footer a:hover {
+      text-decoration: underline; }
+  #cv-footer p {
+    padding: 1em 0; }
+
+/*tablet design for CV footer */
+@media (max-width: 850px) {
+  #cv-footer {
+    height: 500px; }
+    #cv-footer #cv-footer-parent {
+      margin: 4em 0 0 5em; } }
+
+/*phone design for CV footer */
+@media (max-width: 600px) {
+  #cv-footer {
+    height: 411px;
+    margin-top: 3em; }
+    #cv-footer #cv-footer-parent {
+      margin: 4em 0 0 3em; }
+    #cv-footer a {
+      font-size: 0.8em; } }
+
+/*style for cv sections*/
+/*general style for all article and sections*/
+.cv-article, #cv-section {
+  width: 100%;
+  box-sizing: border-box; }
+
+/*about article*/
+#cv-about {
+  background-color: #BC8373;
+  position: relative; }
+  #cv-about #cv-about-text {
+    width: 100%;
+    box-sizing: border-box; }
+    #cv-about #cv-about-text p {
+      padding: 4em 0em 20em 7em;
+      width: 60%; }
+  #cv-about #cv-about-image {
+    width: 100%;
+    box-sizing: border-box; }
+  #cv-about #portrait-image {
+    width: 300px;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 7%;
+    right: 7%; }
+
+/*about article for tablet*/
+@media (max-width: 850px) {
+  #cv-about #cv-about-text p {
+    padding: 2em 0em 18em 4em;
+    width: 76%; }
+  #cv-about #portrait-image {
+    width: 200px; } }
+
+/*about article for phone*/
+@media (max-width: 600px) {
+  #cv-about #cv-about-text {
+    width: 100%;
+    box-sizing: border-box; }
+    #cv-about #cv-about-text p {
+      padding: 2em 1.5em;
+      width: 100%;
+      box-sizing: border-box; }
+  #cv-about #portrait-image {
+    width: 100%;
+    border-radius: 0;
+    position: relative;
+    bottom: 0;
+    right: 0; } }
+
+/*Cv work experiences*/
+#cv-work-container {
+  width: 100%;
+  box-sizing: border-box; }
+  #cv-work-container .cv-work-parent {
+    width: 60%;
+    margin: 2em auto;
+    box-sizing: border-box; }
+  #cv-work-container h3 {
+    display: block;
+    width: 100%;
+    font-size: 2.5em;
+    border-bottom: 1px solid #BC8373;
+    padding-bottom: 0.2em;
+    margin: 2em 0 0.5em 0; }
+  #cv-work-container .cv-work-buzzwords {
+    color: #BC8373;
+    padding-top: 1.2em;
+    font-size: 1em; }
+  #cv-work-container .cv-work-workplace {
+    font-weight: bold; }
+  #cv-work-container .cv-work-date {
+    font-size: 0.9em; }
+  #cv-work-container .cv-work-parent-wrapper {
+    box-sizing: border-box;
+    display: flex; }
+    #cv-work-container .cv-work-parent-wrapper .cv-work-right {
+      padding-left: 2.5em;
+      box-sizing: border-box;
+      width: 80%; }
+    #cv-work-container .cv-work-parent-wrapper .cv-work-left {
+      width: 20%;
+      box-sizing: border-box; }
+
+/*Cv work experiences for tablets*/
+@media (max-width: 850px) {
+  #cv-work-container .cv-work-parent {
+    width: 80%; } }
+
+/*Cv work experiences for phone*/
+@media (max-width: 600px) {
+  #cv-work-container .cv-work-parent {
+    width: 90%; }
+  #cv-work-container h3 {
+    display: block;
+    font-size: 2em;
+    border-bottom: 1px solid #BC8373;
+    padding-bottom: 0.2em;
+    margin: 2em 0 0.5em 0; }
+  #cv-work-container .cv-work-buzzwords {
+    font-size: 1em; }
+  #cv-work-container .cv-work-date {
+    margin-bottom: 1.2em; }
+  #cv-work-container .cv-work-parent-wrapper {
+    display: block; }
+    #cv-work-container .cv-work-parent-wrapper .cv-work-right {
+      padding-left: 0;
+      width: 100%; }
+    #cv-work-container .cv-work-parent-wrapper .cv-work-left {
+      width: 100%; } }
+
+/*Cv education experiences*/
+#cv-education {
+  background-color: #F0EDE9;
+  position: relative;
+  margin-top: 10em;
+  padding: 5em 0 10em 0; }
+  #cv-education #cv-education-container {
+    background-color: #FFFFFF;
+    position: relative;
+    width: 1200px;
+    padding: 5em;
+    box-sizing: border-box; }
+  #cv-education #glasses-image {
+    width: 500px;
+    position: absolute;
+    left: 900px;
+    bottom: -119px; }
+  #cv-education h3 {
+    font-size: 2.5em; }
+  #cv-education .cv-education-read-more {
+    display: block;
+    background-color: #FFFFFF;
+    border: none;
+    padding: 0;
+    margin: 1em 0 4em 0;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1em; }
+    #cv-education .cv-education-read-more:hover {
+      text-decoration: underline; }
+
+/*responsive design for Cv education experiences*/
+@media (max-width: 1450px) {
+  #cv-education #cv-education-container {
+    width: 800px; }
+  #cv-education #glasses-image {
+    width: 400px;
+    left: 598px; } }
+
+@media (max-width: 1100px) {
+  #cv-education #cv-education-container {
+    width: 700px; }
+  #cv-education #glasses-image {
+    left: 391px; } }
+
+/*tablet design for CV education experiences*/
+@media (max-width: 850px) {
+  #cv-education #cv-education-container {
+    width: 500px; }
+  #cv-education #glasses-image {
+    width: 250px;
+    left: 300px;
+    bottom: -56px; } }
+
+/*phone design for CV education experiences*/
+@media (max-width: 600px) {
+  #cv-education {
+    margin-top: 4em; }
+    #cv-education #cv-education-container {
+      width: 300px;
+      padding: 4em 1em 1em 2em; }
+    #cv-education #glasses-image {
+      width: 150px;
+      left: 167px;
+      bottom: -30px; }
+    #cv-education h3 {
+      font-size: 2em; } }
+
+/*design for projects*/
+#cv-projects #cv-project-intro-text {
+  display: block;
+  margin: 4em 0 1em 17%; }
+
+#cv-projects #cv-project-container {
+  box-sizing: border-box;
+  width: 70%;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap; }
+  #cv-projects #cv-project-container .cv-project-parent {
+    background-color: rgba(188, 131, 115, 0.65);
+    position: relative;
+    flex: 0 29%;
+    padding-top: 29%;
+    box-sizing: border-box;
+    margin: 2%; }
+    #cv-projects #cv-project-container .cv-project-parent:hover {
+      background-color: #BC8373; }
+    #cv-projects #cv-project-container .cv-project-parent .cv-project-number {
+      position: absolute;
+      right: 3%;
+      line-height: 0;
+      bottom: 14%;
+      font-size: 12em;
+      font-family: "Peddana", serif; }
+
+/*tablet design for projects*/
+@media (max-width: 850px) {
+  #cv-projects #cv-project-intro-text {
+    margin: 4em 0 1em 12%; }
+  #cv-projects #cv-project-container {
+    width: 80%; }
+    #cv-projects #cv-project-container .cv-project-parent {
+      flex: 0 46%;
+      padding-top: 46%; }
+      #cv-projects #cv-project-container .cv-project-parent .cv-project-number {
+        font-size: 10em; } }
+
+/*phone design for projects*/
+@media (max-width: 600px) {
+  #cv-projects #cv-project-intro-text {
+    margin: 4em 0 1em 6%; }
+  #cv-projects #cv-project-container {
+    width: 90%; }
+    #cv-projects #cv-project-container .cv-project-parent {
+      flex: 0 96%;
+      padding-top: 96%; }
+      #cv-projects #cv-project-container .cv-project-parent .cv-project-number {
+        font-size: 8em; } }
+
+/*CV navigation*/
+#cv-main-nav ul {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 7em 0 7em 7em; }
+  #cv-main-nav ul li a {
+    font-family: "Peddana", serif;
+    text-decoration: none;
+    font-size: 3em; }
+    #cv-main-nav ul li a:hover {
+      font-weight: bold; }
+
+/*CV navigation for phone*/
+@media (max-width: 850px) {
+  #cv-main-nav ul {
+    padding: 3em 0 2em 3em; }
+    #cv-main-nav ul li a {
+      font-size: 2em; } }
+
+/*CV navigation for phone*/
+@media (max-width: 600px) {
+  #cv-main-nav ul li a {
+    font-size: 1.5em; } }
+
+/*style for popups*/
+/*overlay for all popups*/
+/*when active*/
+#overlay {
+  position: fixed;
+  opacity: 0;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+  transition: 200ms ease-in-out; }
+
+/*when ot active*/
+#overlay.active {
+  opacity: 1;
+  pointer-events: all; }
+
+/*education popup*/
+/*when active*/
+.cv-popup {
+  position: fixed;
+  overflow: auto;
+  top: 50%;
+  left: 50%;
+  box-sizing: border-box;
+  transform: translate(-50%, -50%) scale(0);
+  transition: 200ms ease-in-out;
+  background-color: #FFFFFF;
+  z-index: 10;
+  padding: 2em;
+  width: 60%;
+  max-width: 800px; }
+  .cv-popup .cv-popup-heading {
+    display: block;
+    padding: 1em 0;
+    font-size: 2.5em;
+    color: #BC8373; }
+  .cv-popup .cv-popup-text {
+    padding-bottom: 2em; }
+  .cv-popup .close-button {
+    color: #BC8373;
+    background-color: #FFFFFF;
+    border: none;
+    font-size: 2em;
+    float: right;
+    font-weight: bold; }
+    .cv-popup .close-button:hover {
+      color: #000000; }
+
+/*when not*/
+.cv-popup.active {
+  transform: translate(-50%, -50%) scale(1); }
+
+/*project popup- link and buzzwords*/
+.cv-popup-techniques {
+  color: #BC8373; }
+
+.cv-popup-link {
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1em;
+  display: block;
+  margin-top: 2em; }
+  .cv-popup-link:hover {
+    text-decoration: underline; }
+
+.cv-popup-no-link {
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1em;
+  display: block;
+  margin-top: 2em; }
+
+/*responsive design for popups*/
+@media (max-width: 850px) {
+  .cv-popup {
+    width: 70%; } }
+
+@media (max-width: 600px) {
+  .cv-popup {
+    width: 100%;
+    height: 100%; }
+  .close-button {
+    position: absolute;
+    display: block;
+    top: 0;
+    right: 0;
+    padding: 0.5em; } }

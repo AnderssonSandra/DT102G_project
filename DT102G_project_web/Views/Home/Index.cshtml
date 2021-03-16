@@ -1,8 +1,172 @@
-﻿@{
+﻿@model DT102G_project_web.ViewModels.CvViewModel;
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<!--header-->
+<header id="cv-header">
+    <div id="cv-header-empty">
+    </div>
+    <div id="cv-header-image">
+    </div>
+    <div id="cv-header-info">
+        <!--Shoe name and introduction text-->
+        @foreach (var item in Model.PersonalInformations)
+        {
+            <h1 id="cv-header-name">@item.Name @item.Surname</h1>
+            <p id="cv-header-text">@item.IntroductionText</p>
+        }
+    </div>
+</header>
+<section id="cv-section">
+    <!--main meny-->
+    <article class="cv-article" id="cv-navigation">
+        <nav id="cv-main-nav">
+            <!--Main nav is going here-->
+            @foreach(var item in Model.PersonalInformations)
+            {
+                <ul>
+                    <li><a href="#cv-about">1. Who is @item.Name?</a></li>
+                    <li><a href="#cv-work">2. Work Experiences.</a></li>
+                    <li><a href="#cv-education">3. Education.</a></li>
+                    <li><a href="#cv-projects">4. Projects.</a></li>
+                    <li><a href="#cv-footer">5. Contact Info.</a></li>
+                </ul>
+            }
+        </nav>
+    </article>
+    <!--about me-->
+    <article class="cv-article" id="cv-about">
+        <div class="cv-about-div" id="cv-about-image">
+            <img id="portrait-image" src="~/images/profilepicture2.jpg" alt="Portrait on Sandra">
+        </div>
+        <div class="cv-about-div" id="cv-about-text">
+            <!--Change later-->
+            <!--description goes here-->
+            @foreach (var item in Model.PersonalInformations)
+            {
+                <h2>1. Who is @item.Name?</h2>
+                <p>@item.Description</p>
+            }
+        </div>
+    </article>
+    <!--work experiences-->
+    <article class="cv-article" id="cv-work">
+        <h2>2. Work Experiences.</h2>
+        <div id="cv-work-container">
+            <!--Change later-->
+            <!--Show work here-->
+            @foreach(var item in Model.Works)
+            {
+                <div class="cv-work-parent">
+                    <h3>@item.Title</h3>
+                    <div class="cv-work-parent-wrapper">
+                        <div class="cv-work-left">
+                            <p class="cv-work-workplace">@item.Workplace</p>
+                            <p class="cv-work-date">@item.StartDate.ToString("yy-mm-dd")  -  @item.EndDate.ToString("yy-mm-dd")</p>
+                        </div>
+                        <div class="cv-work-right">
+                            <p class="cv-work-description">@item.Description </p>
+                            @if(item.Buzzwords != null)
+                            {
+                                <p class="cv-work-buzzwords">@item.Buzzwords</p>
+                            } 
+                        </div>
+                    </div>
+                </div>
+            }  
+        </div>
+    </article>
+    <!--Education-->
+    <article class="cv-article" id="cv-education">
+        <h2>3. Education.</h2>
+        <!--Change later-->
+        <!--Show education here-->
+        <div id="cv-education-container">
+            <img id="glasses-image" src="images/glasses.png" alt="Image on glasses">
+            <!--Show educations here-->
+            @foreach (var item in Model.Educations)
+            {
+                <div class="cv-education-parent">
+                    <h3>@item.Name</h3>
+                    <p>@item.School,  @item.EndDate.ToString("yy-mm-dd")</p>
+                    <button data-modal-target="#education-@item.EducationId" class="cv-education-read-more">More Info</button>
+                </div>
+                <!--Popup div for show education info-->
+                <div id="cv-education-popup-container">
+                    <div class="cv-popup" id="education-@item.EducationId">
+                        <h3 class="cv-popup-heading">@item.Name</h3>
+                        <p class="cv-popup-text">@item.Description</p>
+                        <button data-close-button class="close-button">×</button>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </article>
+    <!--projects-->
+    <article class="cv-article" id="cv-projects">
+        <h2>4. Some Projects.</h2>
+        <p id="cv-project-intro-text">Click on a box to show a Project.</p>
+        <div id="cv-project-container">
+            <!--Show projects here-->
+            @foreach (var item in Model.Projects)
+            {
+                <div data-modal-target="#project-@item.ProjectId" class="cv-project-parent">
+                    <p class="cv-project-number">@item.ProjectId .</p>
+                </div>
+                <!--Popup div for show project info-->
+                <div id="cv-project-popup-container">
+                    <div class="cv-popup" id="project-@item.ProjectId">
+                        <h3 class="cv-popup-heading">@item.Name</h3>
+                        <p class="cv-popup-text">@item.Description</p>
+                        @if (item.Techniques != null)
+                        {
+                            <p class="cv-popup-techniques">@item.Techniques</p>
+                        }
+                        else
+                        {
+                            <p class="cv-popup-techniques">There is no techniques added to this project.</p>
+                        }
+
+                        @if (item.Link != null)
+                        {
+                            <a class="cv-popup-link" target="_blank" href="@item.Link">Link to Website</a>
+                        }
+                        else
+                        {
+                            <p class="cv-popup-no-link">There is no Link to Website </p>
+                        }
+                        @if (item.Repository != null)
+                        {
+                            <a class="cv-popup-link" target="_blank" href="@item.Repository">Link to Repository</a>
+                        }
+                        else
+                        {
+                            <p class="cv-popup-no-link">There is no Link to Repository </p>
+                        }
+                        <button data-close-button class="close-button">×</button>
+                    </div>
+                </div>
+            }
+
+
+        </div>
+
+    </article>
+</section>
+<footer id="cv-footer">
+    <h2>5. Contact Info</h2>
+    <div id="cv-footer-parent">
+        <!--footer info goes here-->
+        @foreach (var item in Model.PersonalInformations)
+        {
+            <p>@item.Phone</p>
+            <a href="@item.Email">sandersson-hotmail.com</a><br>
+            <a target="_blank" href="@item.LinkedIn">LinkedIn</a>
+        }
+    </div>
+
+</footer>
+<!--overlay for popups-->
+<div id="overlay"></div>

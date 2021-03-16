@@ -32,8 +32,17 @@ namespace DT102G_project_web
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
-            services.AddControllersWithViews();
+            services.AddControllersWithViews(); //activate MVC
             services.AddRazorPages();
+
+            //activate sessions 
+            services.AddDistributedMemoryCache();
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromSeconds(10);
+                options.Cookie.HttpOnly = true;
+            });
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -57,6 +66,8 @@ namespace DT102G_project_web
 
             app.UseAuthentication();
             app.UseAuthorization();
+            //use sessions
+            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {

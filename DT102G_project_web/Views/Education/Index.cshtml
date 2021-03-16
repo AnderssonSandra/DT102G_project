@@ -1,0 +1,67 @@
+﻿@model DT102G_project_web.ViewModels.EducationViewModel;
+@{
+    ViewData["Title"] = "Education page";
+}
+
+<h1>Education</h1>
+
+<!--Add education form-->
+<h4 class="other-h4">Add Education.</h4>
+<hr />
+<form method="post">
+    <label asp-for="Education.Name">Name of Education:</label><br>
+    <input asp-for="Education.Name" /><br>
+    @*error message*@
+    <span class="form-error-message" asp-validation-for="Education.Name"></span><br />
+
+    <label asp-for="Education.School">Name of School:</label><br>
+    <input asp-for="Education.School" /><br>
+    @*error message*@
+    <span class="form-error-message" asp-validation-for="Education.School"></span><br />
+
+    <label asp-for="Education.StartDate">Start Date:</label><br>
+    <input asp-for="Education.StartDate" /><br>
+    @*error message*@
+    <span class="form-error-message" asp-validation-for="Education.StartDate"></span><br />
+
+    <label asp-for="Education.EndDate">End Date:</label><br>
+    <input asp-for="Education.EndDate" /><br>
+    @*error message*@
+    <span class="form-error-message" asp-validation-for="Education.EndDate"></span><br />
+
+    <label asp-for="Education.Description">Description:</label><br>
+    <textarea rows="10" cols="50" asp-for="Education.Description"></textarea><br>
+    @*error message*@
+    <span class="form-error-message" asp-validation-for="Education.Description"></span><br />
+
+    <input class="submit-btn" type="submit" value="Add Education" />
+    @if (@ViewBag.FormMessage != null)
+    {
+        <div class="form-message-div">
+            <p>@ViewBag.FormMessage</p>
+        </div>
+    }
+
+</form>
+
+<h4 class="other-h4">My Education Experiences</h4>
+<hr />
+<!--Se all education-->
+@foreach (var item in Model.Educations)
+{
+    <div class="admin-experience">
+        <h3>Name of Education:</h3>
+        <p>@item.Name</p>
+        <h3>Name of School:</h3>
+        <p>@item.School</p>
+        <h3>Date</h3>
+        <p>@item.StartDate.ToString("yy-MM-dd") to @item.EndDate.ToString("yy-MM-dd")</p>
+        <h3>Description</h3>
+        <p>@item.Description</p>
+        <button class="submit-btn">Uppdatera</button>
+        <button class="submit-btn">Radera</button>
+        <div id="error-div">
+            <!--Error div-->
+        </div>
+    </div>
+}

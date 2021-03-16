@@ -12,17 +12,18 @@ namespace DT102G_project_API.Models
         public int WorkId { get; set; }
 
         [Required]
+        [MaxLength(300)]
+        public string Title { get; set; }
+
+        [Required]
         [MaxLength(200)]
         public string Workplace { get; set; }
 
         [Required]
         public DateTime StartDate { get; set; }
 
-        [Required]
         public DateTime EndDate { get; set; }
 
-        [Required]
-        [MaxLength(300)]
         public string Buzzwords { get; set; }
 
         [Required]
