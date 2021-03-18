@@ -16,14 +16,14 @@ namespace DT102G_project_web.Controllers
     {
         //GET index page
         [Authorize]
-        public async Task<IActionResult> Index(string deletemessage)
+        public async Task<IActionResult> Index(string infomessage)
         {
             ViewBag.FormMessage = null;
 
-            //set value of deletemessage if there is any
-            if (deletemessage != null)
+            //set value of infomessage if there is any
+            if (infomessage != null)
             {
-                ViewBag.Deletemessage = deletemessage;
+                ViewBag.infomessage = infomessage;
             }
 
             //Get work list
@@ -39,6 +39,7 @@ namespace DT102G_project_web.Controllers
         }
 
         //POST 
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> Index(WorkViewModel workViewModel)
         {
@@ -70,16 +71,16 @@ namespace DT102G_project_web.Controllers
                     HttpContext.Session.SetString("workplace", workViewModel.Work.Workplace);
                     string workplace = HttpContext.Session.GetString("workplace");
 
-                    ViewBag.FormMessage = "Du har lagt till arbetet på: " + workplace;
+                    ViewBag.FormMessage = "You added the work at" + workplace;
                 }
                 else
                 {
-                    ViewBag.FormMessage = "Det blev något fel med API:et";
+                    ViewBag.FormMessage = "Something went wrong with the API";
                 }
             }
             else
             {
-                ViewBag.FormMessage = "Det gick inte att lägga till arbetet eftersom formuläret inte är korrekt ifyllt";
+                ViewBag.FormMessage = "Coulden´t add the work experience because the form is incorrect";
             }
 
             //Get work list
@@ -95,6 +96,7 @@ namespace DT102G_project_web.Controllers
 
 
         //GET: delete page
+        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             //check if id is null
@@ -129,6 +131,7 @@ namespace DT102G_project_web.Controllers
         }
 
         // POST: delete page
+        [Authorize]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
@@ -139,17 +142,96 @@ namespace DT102G_project_web.Controllers
             //call on delete function
             bool response = await ApiHelper.DeleteObject<Work>(url, id);
 
-            var deletemessage = "Det gick inte att radera arbetet.";
+            var infomessage = "Coulden´t delete the work experience.";
 
             if (response == true)
             {
-                deletemessage = "Du har nu raderat arbetet.";
+                infomessage = "You succeed to delete the work experience.";
             }
 
-            return RedirectToAction("Index", new { deletemessage = deletemessage });
+            return RedirectToAction("Index", new { infomessage = infomessage });
         }
 
+        //GET: update page
+        [Authorize]
+        public async Task<IActionResult> Update(int? id)
+        {
+            //check if id is null
+            if (id == null)
+            {
+                return NotFound();
+            }
 
+            //Get education object
+            var url = "Works";
+
+            Work work = await ApiHelper.GetOneObject<Work>(url, id);
+
+            //check if object is null
+            if (work == null)
+            {
+                return NotFound();
+            }
+
+            //set value of object
+            var model = new Work
+            {
+                WorkId = work.WorkId,
+                Title = work.Title,
+                Workplace = work.Workplace,
+                Buzzwords = work.Buzzwords,
+                StartDate = work.StartDate,
+                EndDate = work.EndDate,
+                Description = work.Description
+            };
+
+            return View(model);
+        }
+
+        // POST: update page
+        [Authorize]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Update(int id, Work updatedWork)
+        {
+            //url
+            var url = "Works";
+
+            var infomessage = "Coulden´t update the work experience because the form is incorrect.";
+
+            //check if form is correct
+            if (ModelState.IsValid)
+            {
+                //create object
+                Work work = new Work()
+                {
+                    WorkId = updatedWork.WorkId,
+                    Title = updatedWork.Title,
+                    Workplace = updatedWork.Workplace,
+                    Buzzwords = updatedWork.Buzzwords,
+                    StartDate = updatedWork.StartDate,
+                    EndDate = updatedWork.EndDate,
+                    Description = updatedWork.Description
+                };
+
+                //call on update function
+                bool response = await ApiHelper.UpdateObject<Work>(url, id, work);
+
+                infomessage = "Coulden´t update the work experience.";
+
+                if (response == true)
+                {
+                    infomessage = "You succsseded to update the work experience.";
+                }
+
+                return RedirectToAction("Index", new { infomessage = infomessage });
+            }
+            
+            ViewBag.FormMessage = infomessage;
+
+            return View();
+
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

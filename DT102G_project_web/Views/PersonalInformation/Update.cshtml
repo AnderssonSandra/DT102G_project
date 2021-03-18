@@ -1,0 +1,58 @@
+﻿@model DT102G_project_web.Models.PersonalInformation;
+
+@{
+    ViewData["Title"] = "Update";
+}
+
+<!--Change information form-->
+<h4 class="other-h4">Update information about me</h4>
+<hr />
+<form method="post">
+    <label asp-for="Name">Name:</label><br>
+    <input asp-for="Name" /><br>
+    @*error message*@
+    <span class="form-error-message" asp-validation-for="Name"></span><br />
+
+    <label asp-for="Surname">Lastname:</label><br>
+    <input asp-for="Surname">/<br>
+    @*error message*@
+    <span class="form-error-message" asp-validation-for="Surname"></span><br />
+
+    <label asp-for="Email">Email:</label><br>
+    <input asp-for="Email" /><br>
+    @*error message*@
+    <span class="form-error-message" asp-validation-for="Email"></span><br />
+
+    <label asp-for="Phone">Phone:</label><br>
+    <input asp-for="Phone" /><br>
+    @*error message*@
+    <span class="form-error-message" asp-validation-for="Phone"></span><br />
+
+    <label asp-for="LinkedIn">LinkedIn:</label><br>
+    <input asp-for="LinkedIn" /><br>
+    @*error message*@
+    <span class="form-error-message" asp-validation-for="LinkedIn"></span><br />
+
+    <label asp-for="IntroductionText">Introduction text:</label><br>
+    <textarea rows="10" cols="50" asp-for="IntroductionText"></textarea><br>
+    @*error message*@
+    <span class="form-error-message" asp-validation-for="IntroductionText"></span><br />
+
+    <label asp-for="Description">Description:</label><br>
+    <textarea rows="10" cols="50" asp-for="Description"> </textarea><br>
+    @*error message*@
+    <span class="form-error-message" asp-validation-for="Description"></span><br />
+
+    <!--hidden id-->
+    <input type="hidden" asp-for="PersonalInformationId" />
+
+
+    <input class="submit-btn" type="submit" value="Update info" />
+    @if (@ViewBag.FormMessage != null)
+    {
+        <div class="form-message-div">
+            <p>@ViewBag.FormMessage</p>
+        </div>
+    }
+    <a asp-action="Index">Back to List</a>
+</form>

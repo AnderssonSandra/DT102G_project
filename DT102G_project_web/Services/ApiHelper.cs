@@ -132,9 +132,31 @@ namespace DT102G_project_web.Services
         }
 
 
+        //UPDATE
+        public static async Task<bool> UpdateObject<T>(string url, int id, T reqData)
+        {
+            var jsonString = JsonConvert.SerializeObject(reqData);
 
+            StringContent content = new StringContent(jsonString, Encoding.UTF8, "application/json");
+            //create client 
+            var client = new HttpClient
+            {
+                //base adress
+                BaseAddress = new Uri("https://localhost:44325/api/")
+            };
 
-        //delete 
+            //send post  request
+            HttpResponseMessage response = await client.PutAsync(url + "/" + id, content);
+
+            if (response.StatusCode == HttpStatusCode.NoContent)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
 
     }
 }

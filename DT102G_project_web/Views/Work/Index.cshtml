@@ -6,10 +6,10 @@
 
 <h1>Work.</h1>
 
-@if (ViewBag.Deletemessage != null)
+@if (ViewBag.infomessage != null)
 {
     <div class="error-div">
-        <p>@ViewBag.Deletemessage</p>
+        <p>@ViewBag.infomessage</p>
     </div>
 }
 
@@ -70,7 +70,12 @@
         <h3>Workplace:</h3>
         <p>@item.Workplace</p>
         <h3>Date</h3>
-        <p>@item.StartDate.ToString("yy-mm-dd")  to  @item.EndDate.ToString("yy-mm-dd")</p>
+        <p>
+            @item.StartDate.ToString("yy-mm-dd")  - @if (@item.EndDate <= DateTime.Now)
+            {
+                @item.EndDate.ToString("yy-MM-dd")
+            }
+        </p>
         <h3>Buzzwords</h3>
         @if (item.Buzzwords != null)
         {
@@ -82,7 +87,7 @@
         }
         <h3>Description</h3>
         <p>@item.Description </p>
-        <a class="submit-btn" asp-action="Edit" asp-route-id="@item.WorkId">Edit</a>
+        <a class="submit-btn" asp-action="Update" asp-route-id="@item.WorkId">Edit</a>
         <a class="submit-btn" asp-action="Delete" asp-route-id="@item.WorkId">Delete</a>
         <div id="error-div">
             <!--Error div-->

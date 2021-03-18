@@ -25,7 +25,7 @@ namespace DT102G_project_API.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Project>>> GetProject()
         {
-            return await _context.Project.ToListAsync();
+            return await _context.Project.OrderByDescending(project => project.EndDate).ToListAsync();
         }
 
         // GET: api/Projects/5

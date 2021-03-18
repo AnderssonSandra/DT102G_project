@@ -1,0 +1,55 @@
+﻿@model DT102G_project_web.Models.Work;
+
+@{
+    ViewData["Title"] = "Update";
+}
+
+<!--update work form-->
+<h4 class="other-h4">Update Work.</h4>
+<hr />
+
+<!--update work form-->
+<form method="post">
+    <label asp-for="Title">Title:</label><br>
+    <input asp-for="Title" /><br>
+    @*error message*@
+    <span class="form-error-message" asp-validation-for="Title"></span><br />
+
+    <label asp-for="Workplace">Workplace:</label><br>
+    <input asp-for="Workplace" /><br>
+    @*error message*@
+    <span class="form-error-message" asp-validation-for="Workplace"></span><br />
+
+    <label asp-for="StartDate">Start Date:</label><br>
+    <input asp-for="StartDate" /><br>
+    @*error message*@
+    <span class="form-error-message" asp-validation-for="StartDate"></span><br />
+
+    <label asp-for="EndDate">End Date:</label><br>
+    <input asp-for="EndDate" /><br>
+    @*error message*@
+    <span class="form-error-message" asp-validation-for="EndDate"></span><br />
+
+    <label asp-for="Buzzwords">Buzzwords:</label><br>
+    <input asp-for="Buzzwords" /><br>
+    @*error message*@
+    <span class="form-error-message" asp-validation-for="Buzzwords"></span><br />
+
+    <label asp-for="Description">Description:</label><br>
+    <textarea rows="10" cols="50" asp-for="Description"></textarea><br>
+    @*error message*@
+    <span class="form-error-message" asp-validation-for="Description"></span><br />
+
+    <!--hidden id-->
+    <input type="hidden" asp-for="WorkId" />
+
+    <input class="submit-btn" type="submit" value="Update Work">
+
+    @if (@ViewBag.FormMessage != null)
+    {
+        <div class="form-message-div">
+            <p>@ViewBag.FormMessage</p>
+        </div>
+    }
+    <a asp-action="Index">Back to List</a>
+</form>

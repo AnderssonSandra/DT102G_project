@@ -63,7 +63,12 @@
                     <div class="cv-work-parent-wrapper">
                         <div class="cv-work-left">
                             <p class="cv-work-workplace">@item.Workplace</p>
-                            <p class="cv-work-date">@item.StartDate.ToString("yy-mm-dd")  -  @item.EndDate.ToString("yy-mm-dd")</p>
+                            <p class="cv-work-date">
+                                @item.StartDate.ToString("yyyy")  - @if (@item.EndDate <= DateTime.Now)
+                                {
+                                    @item.EndDate.ToString("yyyy")
+                                }
+                            </p>
                         </div>
                         <div class="cv-work-right">
                             <p class="cv-work-description">@item.Description </p>
@@ -89,7 +94,7 @@
             {
                 <div class="cv-education-parent">
                     <h3>@item.Name</h3>
-                    <p>@item.School,  @item.EndDate.ToString("yy-mm-dd")</p>
+                    <p>@item.School,  @item.EndDate.ToString("yyyy")</p>
                     <button data-modal-target="#education-@item.EducationId" class="cv-education-read-more">More Info</button>
                 </div>
                 <!--Popup div for show education info-->

@@ -17,14 +17,14 @@ namespace DT102G_project_web.Controllers
         //GET Index
         [Authorize]
         [HttpGet]
-        public async Task<IActionResult> Index(string deletemessage)
+        public async Task<IActionResult> Index(string infomessage)
         {
             ViewBag.FormMessage = null;
 
-            //set value of deletemessage if there is any
-            if (deletemessage != null)
+            //set value of infomessage if there is any
+            if (infomessage != null)
             {
-                ViewBag.Deletemessage = deletemessage;
+                ViewBag.infomessage = infomessage;
             }
 
             //Get education list
@@ -40,6 +40,7 @@ namespace DT102G_project_web.Controllers
 
         //POST 
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> Index(EducationViewModel educationViewModel)
         {
             //url
@@ -69,15 +70,15 @@ namespace DT102G_project_web.Controllers
                     HttpContext.Session.SetString("school", educationViewModel.Education.School);
                     string school = HttpContext.Session.GetString("school");
                 
-                    ViewBag.FormMessage = "Du har lagt till utbildningen på " + school;
+                    ViewBag.FormMessage = "You added the education at: " + school;
                 } else
                 {
-                    ViewBag.FormMessage = "Det blev något tokit med API:et";
+                    ViewBag.FormMessage = "Something went wrong with the API.";
                 }
                 //updatera sidan                 
             } else
             {
-                ViewBag.FormMessage = "Det gick inte att lägga till utbildningen eftersom formuläret inte är korrekt ifyllt";
+                ViewBag.FormMessage = "Coulden´t add the education because the form is incorrect";
             }
 
             //Get education list
@@ -92,6 +93,7 @@ namespace DT102G_project_web.Controllers
         }
 
         //GET: delete page
+        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             //check if id is null
@@ -125,6 +127,7 @@ namespace DT102G_project_web.Controllers
         }
 
         // POST: delete page
+        [Authorize]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
@@ -135,21 +138,102 @@ namespace DT102G_project_web.Controllers
             //call on delete function
             bool response = await ApiHelper.DeleteObject<Education>(url, id);
 
-            var deletemessage = "Det gick inte att radera utbildningen.";
+            var infomessage = "Coulden´t delete the education.";
 
             if (response == true)
             {
-                deletemessage = "Du har nu raderat utbildningen.";
+                infomessage = "You succeed to delete the education.";
             }
 
-            return RedirectToAction("Index", new { deletemessage = deletemessage });
+            return RedirectToAction("Index", new { infomessage = infomessage });
         }
 
+        //GET: update page
+        [Authorize]
+        public async Task<IActionResult> Update(int? id)
+        {
+            //check if id is null
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            //Get education object
+            var url = "Educations";
+
+            Education education = await ApiHelper.GetOneObject<Education>(url, id);
+
+            //check if object is null
+            if (education == null)
+            {
+                return NotFound();
+            }
+
+            //set value of object
+            var model = new Education
+            {
+                EducationId = education.EducationId,
+                Name = education.Name,
+                School = education.School,
+                StartDate = education.StartDate,
+                EndDate = education.EndDate,
+                Description = education.Description
+            };
+
+            return View(model);
+        }
+
+        // POST: update page
+        [Authorize]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Update(int id, Education updatedEducation)
+        {
+            //url
+            var url = "Educations";
+
+            var infomessage = "Coulden´t update the education because the form is incorrect.";
+
+            //check if form is correct
+            if (ModelState.IsValid)
+            {
+                //create object
+                Education education = new Education()
+                {
+                    EducationId = updatedEducation.EducationId,
+                    Name = updatedEducation.Name,
+                    School = updatedEducation.School,
+                    StartDate = updatedEducation.StartDate,
+                    EndDate = updatedEducation.EndDate,
+                    Description = updatedEducation.Description
+                };
+
+                //call on update function
+                bool response = await ApiHelper.UpdateObject<Education>(url, id, education);
+
+                infomessage = "Coulden´t update the education.";
+
+                if (response == true)
+                {
+                    infomessage = "You succsseded to update the education.";
+
+                }
+
+                return RedirectToAction("Index", new { infomessage = infomessage });
+            }
+
+            ViewBag.FormMessage = infomessage;
+
+            return View();
+
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+
     }
 }

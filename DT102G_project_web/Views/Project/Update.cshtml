@@ -1,0 +1,59 @@
+﻿@model DT102G_project_web.Models.Project;
+
+@{
+    ViewData["Title"] = "Update";
+}
+
+<!--Add project form-->
+<h4 class="other-h4">Update Project.</h4>
+<hr />
+
+<form method="post">
+    <label asp-for="Name">Name of Project:</label><br>
+    <input asp-for="Name" /><br>
+    @*error message*@
+    <span class="form-error-message" asp-validation-for="Name"></span><br />
+
+    <label asp-for="Link">Link to Website:</label><br>
+    <input asp-for="Link" /><br>
+    @*error message*@
+    <span class="form-error-message" asp-validation-for="Link"></span><br />
+
+    <label asp-for="Repository">Link to Github Repo:</label><br>
+    <input asp-for="Repository" /><br>
+    @*error message*@
+    <span class="form-error-message" asp-validation-for="Repository"></span><br />
+
+    <label asp-for="Techniques">Techniques:</label><br>
+    <input asp-for="Techniques" /><br>
+    @*error message*@
+    <span class="form-error-message" asp-validation-for="Techniques"></span><br />
+
+    <label asp-for="StartDate">Start Date for project:</label><br>
+    <input asp-for="StartDate" /><br>
+    @*error message*@
+    <span class="form-error-message" asp-validation-for="StartDate"></span><br />
+
+    <label asp-for="EndDate">Relese Date for project:</label><br>
+    <input asp-for="EndDate" /><br>
+    @*error message*@
+    <span class="form-error-message" asp-validation-for="EndDate"></span><br />
+
+    <label asp-for="Description">Description:</label><br>
+    <textarea rows="10" cols="50" asp-for="Description"></textarea><br>
+    @*error message*@
+    <span class="form-error-message" asp-validation-for="Description"></span><br />
+
+    <!--hidden id-->
+    <input type="hidden" asp-for="ProjectId" />
+
+    <input class="submit-btn" type="submit" value="Update Project">
+    @if (@ViewBag.FormMessage != null)
+    {
+        <div class="form-message-div">
+            <p>@ViewBag.FormMessage</p>
+        </div>
+    }
+    <a asp-action="Index">Back to List</a>
+
+</form>
