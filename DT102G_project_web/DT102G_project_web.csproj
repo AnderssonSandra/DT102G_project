@@ -1,8 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp5.0</TargetFramework>
-    <UserSecretsId>aspnet-DT102G_project_web-4FEB786A-579F-4459-A642-9E852669B8B4</UserSecretsId>
+  <TargetFramework>net5.0</TargetFramework>
+  <UserSecretsId>aspnet-DT102G_project_web-4FEB786A-579F-4459-A642-9E852669B8B4</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
