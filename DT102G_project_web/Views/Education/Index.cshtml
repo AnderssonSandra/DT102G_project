@@ -5,11 +5,18 @@
 
 <h1>Education</h1>
 
+@if (ViewBag.Deletemessage != null)
+{
+    <div class="error-div">
+        <p>@ViewBag.Deletemessage</p>
+    </div>
+}
+
 <!--Add education form-->
 <h4 class="other-h4">Add Education.</h4>
 <hr />
 <form method="post">
-    <label asp-for="Education.Name">Name of Education:</label><br>
+    <label asp-for="Education">Name of Education:</label><br>
     <input asp-for="Education.Name" /><br>
     @*error message*@
     <span class="form-error-message" asp-validation-for="Education.Name"></span><br />
@@ -58,8 +65,8 @@
         <p>@item.StartDate.ToString("yy-MM-dd") to @item.EndDate.ToString("yy-MM-dd")</p>
         <h3>Description</h3>
         <p>@item.Description</p>
-        <button class="submit-btn">Uppdatera</button>
-        <button class="submit-btn">Radera</button>
+        <a class="submit-btn" asp-action="Edit" asp-route-id="@item.EducationId">Edit</a>
+        <a class="submit-btn" asp-action="Delete" asp-route-id="@item.EducationId">Delete</a>
         <div id="error-div">
             <!--Error div-->
         </div>

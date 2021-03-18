@@ -116,6 +116,9 @@ h4 {
   color: #BC8373;
   font-size: 1em; }
 
+.delete-question {
+  text-align: center; }
+
 /*responsive design for tablets*/
 @media (max-width: 850px) {
   h2 {
@@ -374,6 +377,18 @@ form {
     margin-top: 1em; }
     .admin-experience .submit-btn:hover {
       background-color: #000000; }
+
+.error-div {
+  width: 90%;
+  max-width: 600px;
+  background-color: #BC8373;
+  margin: 2em auto;
+  box-sizing: border-box;
+  padding: 2em;
+  text-align: center; }
+  .error-div p {
+    color: #FFFFFF;
+    font-weight: bold; }
 
 /*responsive design for show experieces*/
 /*tablet*/

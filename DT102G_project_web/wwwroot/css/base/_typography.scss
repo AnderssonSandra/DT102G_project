@@ -87,6 +87,10 @@ h4 {
     font-size: 1em;
 }
 
+.delete-question {
+    text-align: center;
+}
+
 /*responsive design for tablets*/
 @include tablet {
     h2 {

@@ -116,6 +116,9 @@ h4 {
   color: #BC8373;
   font-size: 1em; }
 
+.delete-question {
+  text-align: center; }
+
 /*responsive design for tablets*/
 @media (max-width: 850px) {
   h2 {

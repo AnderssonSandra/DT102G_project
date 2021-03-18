@@ -5,10 +5,18 @@
 }
 
 <h1>Work.</h1>
-<!--Add work form-->
+
+@if (ViewBag.Deletemessage != null)
+{
+    <div class="error-div">
+        <p>@ViewBag.Deletemessage</p>
+    </div>
+}
+
 <h4 class="other-h4">Add Work.</h4>
 <hr />
 
+<!--Add work form-->
 <form method="post">
     <label asp-for="Work.Title">Title:</label><br>
     <input asp-for="Work.Title" /><br>
@@ -56,28 +64,28 @@
 
 @foreach (var item in Model.Works)
 {
-<div class="admin-experience">
-    <h3>Title:</h3>
-    <p>@item.Title</p>
-    <h3>Workplace:</h3>
-    <p>@item.Workplace</p>
-    <h3>Date</h3>
-    <p>@item.StartDate.ToString("yy-mm-dd")  to  @item.EndDate.ToString("yy-mm-dd")</p>
-    <h3>Buzzwords</h3>
-    @if (item.Buzzwords != null)
-    {
-        <p>@item.Buzzwords</p>
-    }
-    else
-    {
-        <p>Det finns inga angivna tekniker</p>
-    }
-    <h3>Description</h3>
-    <p>@item.Description </p>
-    <button class="submit-btn">Uppdatera</button>
-    <button class="submit-btn">Radera</button>
-    <div id="error-div">
-        <!--Error div-->
+    <div class="admin-experience">
+        <h3>Title:</h3>
+        <p>@item.Title</p>
+        <h3>Workplace:</h3>
+        <p>@item.Workplace</p>
+        <h3>Date</h3>
+        <p>@item.StartDate.ToString("yy-mm-dd")  to  @item.EndDate.ToString("yy-mm-dd")</p>
+        <h3>Buzzwords</h3>
+        @if (item.Buzzwords != null)
+        {
+            <p>@item.Buzzwords</p>
+        }
+        else
+        {
+            <p>Det finns inga angivna tekniker</p>
+        }
+        <h3>Description</h3>
+        <p>@item.Description </p>
+        <a class="submit-btn" asp-action="Edit" asp-route-id="@item.WorkId">Edit</a>
+        <a class="submit-btn" asp-action="Delete" asp-route-id="@item.WorkId">Delete</a>
+        <div id="error-div">
+            <!--Error div-->
+        </div>
     </div>
-</div>
 }

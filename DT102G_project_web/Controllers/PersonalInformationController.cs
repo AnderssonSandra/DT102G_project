@@ -29,30 +29,6 @@ namespace DT102G_project_web.Controllers
             return View(viewModel);
         }
 
-        //POST 
-        [HttpPost]
-        public IActionResult Index(PersonalInformation personalInformation)
-        {
-            //check if form is correct
-            if (ModelState.IsValid)
-            {
-                //skicka till API
-
-                //updatera sidan 
-
-
-                //clear form
-                ModelState.Clear();
-
-                ViewBag.FormMessage = "Du har uppdaterat informationen";
-            }
-            else
-            {
-                ViewBag.FormMessage = "Det gick inte att uppdatera informationen";
-            }
-            return View();
-        }
-
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

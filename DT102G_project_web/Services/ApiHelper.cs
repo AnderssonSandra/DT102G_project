@@ -6,12 +6,14 @@ using Newtonsoft.Json;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
+using System.Net;
+using System.IO;
 
 namespace DT102G_project_web.Services
 {
     public class ApiHelper
     {
-        //Get all
+        //GET ALL
         public static async Task<List<T>> GetAllObjects<T>(string url)
         {
             //create client 
@@ -42,11 +44,9 @@ namespace DT102G_project_web.Services
         }
 
 
-
-        /*post 
-        private async Task<T> PostRequest<T>(string url, object model)
+        //GET ONE
+        public static async Task<T> GetOneObject<T>(string url, int? id)
         {
-            
             //create client 
             var client = new HttpClient
             {
@@ -57,51 +57,81 @@ namespace DT102G_project_web.Services
             //define headers
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-            var serializedObject = JsonConvert.SerializeObject(model);
+            var returnobj = default(T);
 
-            HttpResponseMessage response = await client.PostAsJsonAsync(
-                url, model);
-            response.EnsureSuccessStatusCode();
-
-            // return URI of the created resource.
-            return T;
-        }*/
-
-
-
-        //get one
-
-
-
-        /*post
-        private async Task<TOut> PostRequest<TIn, TOut>(string uri, TIn content)
-        {
             try
             {
-                using (var client = new HttpClient())
+                var response = await client.GetAsync(url + "/" + id);
+                if (response.IsSuccessStatusCode)
                 {
-                    client.DefaultRequestHeaders.Accept.Add(
-                    new MediaTypeWithQualityHeaderValue("application/json"));
-
-                    var serialized = new StringContent(JsonConvert.SerializeObject(content), Encoding.UTF8, "application/json");
-
-                    using (HttpResponseMessage response = await client.PostAsync(uri, serialized))
-                    {
-                        response.EnsureSuccessStatusCode();
-                        string responseBody = await response.Content.ReadAsStringAsync();
-
-                        return JsonConvert.DeserializeObject<TOut>(responseBody);
-                    }
+                    var content = await response.Content.ReadAsStringAsync();
+                    returnobj = JsonConvert.DeserializeObject<T>(content);
                 }
             }
-            catch (Exception ex)
+            catch
             {
-                return ex.ToString();
+                return default(T);
             }
-        }*/
+            return returnobj;
+        }
 
 
-        //update
+        //POST
+        public static async Task<bool> PostObject<T>(string url, T reqData)
+        {
+            var jsonString = JsonConvert.SerializeObject(reqData);
+
+            StringContent content = new StringContent(jsonString, Encoding.UTF8, "application/json");
+            //create client 
+            var client = new HttpClient
+            {
+                //base adress
+                BaseAddress = new Uri("https://localhost:44325/api/")
+            };
+
+            //send post  request
+            HttpResponseMessage response = await client.PostAsync(url, content);
+
+            if (response.StatusCode == HttpStatusCode.Created)
+            {
+                return true;
+            } else
+            {
+                return false;
+            }      
+        }
+
+        //DELETE
+        public static async Task<bool> DeleteObject<T>(string url, int id)
+        {
+            //create client 
+            var client = new HttpClient
+            {
+                //base adress
+                BaseAddress = new Uri("https://localhost:44325/api/")
+            };
+
+            //define headers
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+            var returnobj = false;
+
+            try
+            {
+                var response = await client.DeleteAsync(url + "/" + id);
+                if (response.IsSuccessStatusCode)
+                {
+                    returnobj = true;
+                }
+            }
+            catch
+            {
+                return false;
+            }
+            return returnobj;
+        }
+
+
 
 
         //delete 

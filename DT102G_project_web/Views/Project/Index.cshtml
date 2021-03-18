@@ -6,6 +6,13 @@
 
 <h1>Project.</h1>
 
+@if(ViewBag.Deletemessage != null)
+{
+    <div class="error-div">
+        <p>@ViewBag.Deletemessage</p>
+    </div>
+}
+
 <!--Add project form-->
 <h4 class="other-h4">Add Project.</h4>
 <hr />
@@ -95,8 +102,8 @@
     <p>@item.StartDate.ToString("yy-MM-dd")  to  @item.EndDate.ToString("yy-MM-dd")</p>
     <h3>Description</h3>
     <p>@item.Description</p>
-    <button class="submit-btn">Uppdatera</button>
-    <button class="submit-btn">Radera</button>
+    <a class="submit-btn" asp-action="Edit" asp-route-id="@item.ProjectId">Edit</a>
+    <a class="submit-btn" asp-action="Delete" asp-route-id="@item.ProjectId">Delete</a>
     <div id="error-div">
         <!--Error div-->
     </div>
