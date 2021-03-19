@@ -9,14 +9,14 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DT102G_project_api.Migrations
 {
     [DbContext(typeof(CvContext))]
-    [Migration("20210318203339_initialcreate")]
-    partial class initialcreate
+    [Migration("20210319092513_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "5.0.3");
+                .HasAnnotation("ProductVersion", "5.0.4");
 
             modelBuilder.Entity("DT102G_project_API.Models.Education", b =>
                 {

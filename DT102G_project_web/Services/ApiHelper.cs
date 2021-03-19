@@ -20,7 +20,7 @@ namespace DT102G_project_web.Services
             var client = new HttpClient
             {
                 //base adress
-                BaseAddress = new Uri("https://localhost:44325/api/")
+                BaseAddress = new Uri("https://dt102gprojectapi.azurewebsites.net/api/")
             };
 
             //define headers
@@ -51,7 +51,7 @@ namespace DT102G_project_web.Services
             var client = new HttpClient
             {
                 //base adress
-                BaseAddress = new Uri("https://localhost:44325/api/")
+                BaseAddress = new Uri("https://dt102gprojectapi.azurewebsites.net/api/")
             };
 
             //define headers
@@ -86,7 +86,7 @@ namespace DT102G_project_web.Services
             var client = new HttpClient
             {
                 //base adress
-                BaseAddress = new Uri("https://localhost:44325/api/")
+                BaseAddress = new Uri("https://dt102gprojectapi.azurewebsites.net/api/")
             };
 
             //send post  request
@@ -108,7 +108,7 @@ namespace DT102G_project_web.Services
             var client = new HttpClient
             {
                 //base adress
-                BaseAddress = new Uri("https://localhost:44325/api/")
+                BaseAddress = new Uri("https://dt102gprojectapi.azurewebsites.net/api/")
             };
 
             //define headers
@@ -142,7 +142,7 @@ namespace DT102G_project_web.Services
             var client = new HttpClient
             {
                 //base adress
-                BaseAddress = new Uri("https://localhost:44325/api/")
+                BaseAddress = new Uri("https://dt102gprojectapi.azurewebsites.net/api/")
             };
 
             //send post  request

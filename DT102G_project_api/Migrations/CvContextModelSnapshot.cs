@@ -14,7 +14,7 @@ namespace DT102G_project_api.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "5.0.3");
+                .HasAnnotation("ProductVersion", "5.0.4");
 
             modelBuilder.Entity("DT102G_project_API.Models.Education", b =>
                 {

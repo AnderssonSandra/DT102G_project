@@ -22,6 +22,7 @@ namespace DT102G_project_API.Models
         [Required]
         public DateTime StartDate { get; set; }
 
+        [Required]
         public DateTime EndDate { get; set; }
 
         public string Buzzwords { get; set; }
