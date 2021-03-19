@@ -1,0 +1,16 @@
+﻿@model DT102G_project_web.Models.Education;
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+<h4 class="delete-question">Are you sure you want to delete the education on @Model.School ?</h4>
+<div>
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="EducationId" />
+        <input type="submit" value="Delete" class="btn btn-danger" />
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

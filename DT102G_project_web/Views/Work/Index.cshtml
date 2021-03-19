@@ -1,0 +1,96 @@
+﻿@model DT102G_project_web.ViewModels.WorkViewModel;
+
+@{
+    ViewData["Title"] = "Work Page";
+}
+
+<h1>Work.</h1>
+
+@if (ViewBag.infomessage != null)
+{
+    <div class="error-div">
+        <p>@ViewBag.infomessage</p>
+    </div>
+}
+
+<h4 class="other-h4">Add Work.</h4>
+<hr />
+
+<!--Add work form-->
+<form method="post">
+    <label asp-for="Work.Title">Title:</label><br>
+    <input asp-for="Work.Title" /><br>
+    @*error message*@
+    <span class="form-error-message" asp-validation-for="Work.Title"></span><br />
+
+    <label asp-for="Work.Workplace">Workplace:</label><br>
+    <input asp-for="Work.Workplace" /><br>
+    @*error message*@
+    <span class="form-error-message" asp-validation-for="Work.Workplace"></span><br />
+
+    <label asp-for="Work.StartDate">Start Date:</label><br>
+    <input asp-for="Work.StartDate" /><br>
+    @*error message*@
+    <span class="form-error-message" asp-validation-for="Work.StartDate"></span><br />
+
+    <label asp-for="Work.EndDate">End Date:</label><br>
+    <input asp-for="Work.EndDate" /><br>
+    @*error message*@
+    <span class="form-error-message" asp-validation-for="Work.EndDate"></span><br />
+
+    <label asp-for="Work.Buzzwords">Buzzwords:</label><br>
+    <input asp-for="Work.Buzzwords" /><br>
+    @*error message*@
+    <span class="form-error-message" asp-validation-for="Work.Buzzwords"></span><br />
+
+    <label asp-for="Work.Description">Description:</label><br>
+    <textarea rows="10" cols="50" asp-for="Work.Description"></textarea><br>
+    @*error message*@
+    <span class="form-error-message" asp-validation-for="Work.Description"></span><br />
+
+    <input class="submit-btn" type="submit" value="Add Work">
+
+    @if (@ViewBag.FormMessage != null)
+    {
+        <div class="form-message-div">
+            <p>@ViewBag.FormMessage</p>
+        </div>
+    }
+</form>
+
+<!--See all work-->
+<h4 class="other-h4">My Work Experiences.</h4>
+<hr />
+
+@foreach (var item in Model.Works)
+{
+    <div class="admin-experience">
+        <h3>Title:</h3>
+        <p>@item.Title</p>
+        <h3>Workplace:</h3>
+        <p>@item.Workplace</p>
+        <h3>Date</h3>
+        <p>
+            @item.StartDate.ToString("yy-mm-dd")  - @if (@item.EndDate <= DateTime.Now)
+            {
+                @item.EndDate.ToString("yy-MM-dd")
+            }
+        </p>
+        <h3>Buzzwords</h3>
+        @if (item.Buzzwords != null)
+        {
+            <p>@item.Buzzwords</p>
+        }
+        else
+        {
+            <p>Det finns inga angivna tekniker</p>
+        }
+        <h3>Description</h3>
+        <p>@item.Description </p>
+        <a class="submit-btn" asp-action="Update" asp-route-id="@item.WorkId">Edit</a>
+        <a class="submit-btn" asp-action="Delete" asp-route-id="@item.WorkId">Delete</a>
+        <div id="error-div">
+            <!--Error div-->
+        </div>
+    </div>
+}

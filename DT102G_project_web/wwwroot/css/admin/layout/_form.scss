@@ -1,0 +1,147 @@
+﻿/*style for forms*/
+form {
+    width: 50%;
+    box-sizing: border-box;
+    margin: 2em auto;
+    background-color: $beige;
+    padding: 2em;
+
+
+    .form-inline {
+        display: inline-block;
+        background-color: none;
+    }
+
+    input, textarea {
+        width: 100%;
+        display: block;
+        box-sizing: border-box;
+        font-family: $text;
+        padding: 1em;
+        font-size: 1.2em;
+        border: none;
+        background-color: $white !important;
+    }
+
+    button[type=submit], .submit-btn {
+        width: 100%;
+        display: block;
+        box-sizing: border-box;
+        font-family: $text;
+        background-color: $pink !important;
+        color: $white;
+        margin-top: 2em;
+        padding: 1em;
+        font-size: 1.2em;
+        border: none;
+
+        &:hover {
+            background-color: $black !important;
+        }
+    }
+
+    label {
+        font-size: 1.4em;
+        padding: 1.5em 0 0 0;
+        display: block;
+    }
+
+    .checkbox {
+        width: 100%;
+        display: flex;
+
+        label {
+            flex-grow: 1;
+        }
+
+        input {
+            width: 25px;
+            -webkit-appearance: none;
+            background-color: #fafafa;
+            border: 1px solid #cacece;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05);
+            padding: 9px;
+            border-radius: 3px;
+            display: inline-block;
+            position: relative;
+        }
+
+        input:checked, input:checked:active {
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px 1px 3px rgba(0,0,0,0.1);
+        }
+
+        input:checked {
+            background-color: #e9ecee;
+            border: 1px solid #adb8c0;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05), inset 15px 10px -12px rgba(255,255,255,0.1);
+            color: #99a1a7;
+        }
+
+        input:after {
+            content: '\2714';
+            font-size: 14px;
+            position: absolute;
+            top: 0px;
+            left: 3px;
+            color: #99a1a7;
+        }
+    }
+
+
+    .text-danger {
+        color: $pink;
+    }
+
+    p {
+        a {
+            font-size: 1em;
+            padding: 0.3em 0;
+            display: block;
+        }
+    }
+
+    .form-message-div {
+        width: 100%;
+        margin: 1em 0;
+        padding: 3em 1em;
+        box-sizing: border-box;
+        text-align: center;
+        border: 5px solid $white;
+        background-color:#f9f9f9;
+        p {
+            font-weight: bold;
+        }
+    }
+}
+
+/*responsive design for form*/
+/*tablet*/
+@include tablet {
+    form {
+        width: 80%;
+    }
+}
+
+/*phone*/
+@include phone {
+    form {
+        width: 100%;
+        padding: 1em;
+
+
+        input, textarea {
+            margin: 0 0 0.5em 0;
+            font-size: 1em;
+        }
+
+        label {
+            font-size: 1.1em;
+            padding: 1em 0 0 0;
+        }
+
+        button[type=submit], .submit-btn {
+            margin-top: 1em;
+        }
+    }
+}
+

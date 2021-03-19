@@ -25,7 +25,7 @@ namespace DT102G_project_API.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Education>>> GetEducation()
         {
-            return await _context.Education.ToListAsync();
+            return await _context.Education.OrderByDescending(education => education.EndDate).ToListAsync();
         }
 
         // GET: api/Educations/5

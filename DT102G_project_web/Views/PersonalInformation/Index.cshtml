@@ -1,0 +1,39 @@
+﻿@model DT102G_project_web.ViewModels.PersonalInformationViewModel;
+
+@{
+    ViewData["Title"] = "PersonalInformation Page";
+}
+
+<h1>About me</h1>
+
+@if (ViewBag.infomessage != null)
+{
+    <div class="error-div">
+        <p>@ViewBag.infomessage</p>
+    </div>
+}
+
+<!--See all projects-->
+<h4 class="other-h4">Personal Information.</h4>
+<hr />
+
+@foreach (var item in Model.PersonalInformations)
+{
+    <div class="admin-experience">
+        <h3>Name:</h3>
+        <p>@item.Name</p>
+        <h3>Surname:</h3>
+        <p>@item.Surname</p>
+        <h3>Email:</h3>
+        <p>@item.Email</p>
+        <h3>Phone:</h3>
+        <p>@item.Phone</p>
+        <h3>LinkedIn:</h3>
+        <p>@item.LinkedIn</p>
+        <h3>Introduction text:</h3>
+        <p>@item.IntroductionText</p>
+        <h3>Description:</h3>
+        <p>@item.Description</p>
+        <a class="submit-btn" asp-action="Update" asp-route-id="@item.PersonalInformationId">Edit</a>
+    </div>
+}

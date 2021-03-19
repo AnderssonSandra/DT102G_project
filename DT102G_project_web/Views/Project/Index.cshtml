@@ -1,0 +1,116 @@
+﻿@model DT102G_project_web.ViewModels.ProjectViewModel;
+
+@{
+    ViewData["Title"] = "Project Page";
+}
+
+<h1>Project.</h1>
+
+@if(ViewBag.infomessage != null)
+{
+    <div class="error-div">
+        <p>@ViewBag.infomessage</p>
+    </div>
+}
+
+<!--Add project form-->
+<h4 class="other-h4">Add Project.</h4>
+<hr />
+<form method="post">
+    <label asp-for="Project.Name">Name of Project:</label><br>
+    <input asp-for="Project.Name" /><br>
+    @*error message*@
+    <span class="form-error-message" asp-validation-for="Project.Name"></span><br />
+
+    <label asp-for="Project.Link">Link to Website:</label><br>
+    <input asp-for="Project.Link" /><br>
+    @*error message*@
+    <span class="form-error-message" asp-validation-for="Project.Link"></span><br />
+
+    <label asp-for="Project.Repository">Link to Github Repo:</label><br>
+    <input asp-for="Project.Repository" /><br>
+    @*error message*@
+    <span class="form-error-message" asp-validation-for="Project.Repository"></span><br />
+
+    <label asp-for="Project.Techniques">Techniques:</label><br>
+    <input asp-for="Project.Techniques" /><br>
+    @*error message*@
+    <span class="form-error-message" asp-validation-for="Project.Techniques"></span><br />
+
+    <label asp-for="Project.StartDate">Start Date for project:</label><br>
+    <input asp-for="Project.StartDate" /><br>
+    @*error message*@
+    <span class="form-error-message" asp-validation-for="Project.StartDate"></span><br />
+
+    <label asp-for="Project.EndDate">Relese Date for project:</label><br>
+    <input asp-for="Project.EndDate" /><br>
+    @*error message*@
+    <span class="form-error-message" asp-validation-for="Project.EndDate"></span><br />
+
+    <label asp-for="Project.Description">Description:</label><br>
+    <textarea rows="10" cols="50" asp-for="Project.Description"></textarea><br>
+    @*error message*@
+    <span class="form-error-message" asp-validation-for="Project.Description"></span><br />
+
+    <input class="submit-btn" type="submit" value="Add Project">
+    @if (@ViewBag.FormMessage != null)
+    {
+        <div class="form-message-div">
+            <p>@ViewBag.FormMessage</p>
+        </div>
+    }
+</form>
+
+<!--See all projects-->
+<h4 class="other-h4">My Projects Experiences.</h4>
+<hr />
+
+@foreach (var item in Model.Projects)
+{
+<div class="admin-experience">
+    <h3>Name of Project:</h3>
+    <p>@item.Name</p>
+    <h3>Link to Website:</h3>
+    @if (item.Link != null)
+    {
+        <p>@item.Link</p>
+    }
+    else
+    {
+        <p>Det finns ingen länk till webbsidan</p>
+    }
+    <h3>Link to Github Repo:</h3>
+    @if (item.Repository != null)
+    {
+        <p>@item.Repository</p>
+    }
+    else
+    {
+        <p>Det finns inget repository kopplat till projektet</p>
+    }
+    <h3>Techniques</h3>
+    @if (item.Techniques != null)
+    {
+        <p>@item.Techniques</p>
+    }
+    else
+    {
+        <p>Det finns inga angivna tekniker</p>
+    }
+
+    <h3>Date:</h3>
+    <p>
+        @item.StartDate.ToString("yy-MM-dd")  - @if (@item.EndDate <= DateTime.Now)
+        {
+            @item.EndDate.ToString("yy-MM-dd")
+        }
+    </p>
+    <h3>Description</h3>
+    <p>@item.Description</p>
+    <a class="submit-btn" asp-action="Update" asp-route-id="@item.ProjectId">Edit</a>
+    <a class="submit-btn" asp-action="Delete" asp-route-id="@item.ProjectId">Delete</a>
+    <div id="error-div">
+        <!--Error div-->
+    </div>
+</div>
+}

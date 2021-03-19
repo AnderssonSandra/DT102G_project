@@ -14,7 +14,7 @@ namespace DT102G_project_api.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "5.0.3");
+                .HasAnnotation("ProductVersion", "5.0.4");
 
             modelBuilder.Entity("DT102G_project_API.Models.Education", b =>
                 {
@@ -128,8 +128,6 @@ namespace DT102G_project_api.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Buzzwords")
-                        .IsRequired()
-                        .HasMaxLength(300)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Description")
@@ -140,6 +138,11 @@ namespace DT102G_project_api.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("StartDate")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(300)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Workplace")

@@ -25,7 +25,7 @@ namespace DT102G_project_API.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Work>>> GetWorks()
         {
-            return await _context.Works.ToListAsync();
+            return await _context.Works.OrderByDescending(work => work.EndDate).ToListAsync();
         }
 
         // GET: api/Works/5

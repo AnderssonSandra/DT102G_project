@@ -1,0 +1,74 @@
+﻿//main admin navigation
+.admin-main-nav {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 2em 1em;
+    background-color: $beige;
+
+    .navbar-nav {
+        display: flex;
+        margin: auto;
+
+        .nav-item {
+            flex-grow: 1;
+            text-align: center;
+
+            a {
+                text-decoration: none;
+                font-size: 1.2em;
+                &:hover {
+                  color: $pink;
+                }
+            }
+        }
+    }
+}
+
+//manage account navigation
+.nav {
+    display: flex;
+    margin: auto;
+    margin: 3em auto;
+
+    .nav-item {
+        flex-grow: 1;
+        text-align: center;
+
+        a {
+            text-decoration: none;
+            font-size: 1.2em;
+            color: $lightpink;
+
+            &:hover {
+                color: $black;
+            }
+        }
+    }
+}
+
+@include tablet {
+    .admin-main-nav {
+        .navbar-nav {
+            display: block;
+
+            .nav-item {
+                padding-left: 1em;
+                text-align: left;
+
+                a {
+                }
+            }
+        }
+    }
+
+    .nav {
+        display: block;
+
+        .nav-item {
+            text-align: left;
+            padding-left: 1em;
+            a {
+            }
+        }
+    }
+}
